@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/main.css">
+    <title>Meme Generator</title>
+</head>
+
+<body onload="onInit()">
+
+    <div class="main-container">
+        <header class="main-header">
+            <div class="logo">Boo</div>
+            <nav class="nav">
+                <a onclick="onGallery()" class="gallery-section">Gallery</a>
+            </nav>
+        </header>
+
+        <div class="main-content">
+
+            <section class="gallery">
+                <div class="gallery-container"></div>
+            </section>
+
+            <section class="editor">
+                <div class="canvas-container">
+                    <canvas width="500" height="500"> </canvas>
+                </div>
+
+                <div class="canvas-editor">
+                    <div class="form-container">
+                        <form id="user-form" onsubmit="onSubmit(event)">
+                            <label for="text"></label>
+                            <input type="text" id="text" name="text" placeholder="Add Text Here"
+                                oninput="onSetLineText()" />
+                            <datalist id="text"></datalist>
+                            <input type="color" id="color" name="color" value="#dcad2e" oninput="onSelectedColor()" />
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script src="JS/services.js/memeService.js"></script>
+    <script src="JS/main.js"></script>
+    <script src="JS/memeController.js"></script>
+    <script src="JS/galleryController.js"></script>
+
+
+</body>
+
+</html>

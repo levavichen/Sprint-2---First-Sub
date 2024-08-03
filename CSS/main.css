@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0
+}
+
+body {
+    background-color: rgba(240, 230, 140, 0.114);
+    text-align: center;
+}
+
+.main-container {
+    padding: 10px;
+    border-radius: 25px;
+    background-color: khaki;
+
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+}
+
+.main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1em;
+    height: 3em;
+    border-radius: 25px;
+
+    background-color: beige;
+}
+
+.editor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2em minmax(500px, 1fr);
+    width: 80vw;
+    justify-content: center;
+    padding: 2em;
+}
+
+.canvas-container {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: black;
+    border-radius: 25px;
+    padding: 1em
+}
+
+.canvas-editor {
+    grid-column: 2/3;
+    grid-row: 2/3;
+    align-self: center;
+    justify-self: center;
+
+    background-color: antiquewhite;
+    border-radius: 25px;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#text {
+    border-radius: 30px;
+}
