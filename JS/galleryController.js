@@ -20,7 +20,6 @@ function onImgSelect(imgId) {
 }
 
 function onGallery() {
-//  debugger
     const elGallery = document.querySelector('.gallery')
     const elEditor = document.querySelector('.editor')
 

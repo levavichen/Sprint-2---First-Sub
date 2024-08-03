@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/main.css">
+    <script src="https://kit.fontawesome.com/77242c873d.js" crossorigin="anonymous"></script>
     <title>Meme Generator</title>
 </head>
 
@@ -38,7 +39,18 @@
                             <datalist id="text"></datalist>
                         </section>
                         <section>
-                            <input type="color" id="color" name="color" value="#dcad2e" oninput="onSelectedColor()" />
+                            <button class="increase" onclick="onIncreaseFont()">increase</button>
+                            <button class="decrease" onclick="onDecreaseFont()">decrease</button>
+                        </section>
+                        <section>
+                            <label for="strokeClr" class="fa-solid fa-paintbrush"></label>
+                            <input type="color" id="strokeColor" name="strokeColor" value="#dcad2e"
+                                oninput="onSelectedStrokeClr()" />
+                        </section>
+                        <section>
+                            <label for="fillClr" class="fa-solid fa-fill"></label>
+                            <input type="color" id="fillClr" name="fillClr" value="#dcad2e"
+                                oninput="onSelectedFillClr()" />
                         </section>
                         <section>
                             <a href="#" class="btn" onclick="onDownloadMeme(this)" download="my-img.jpg">Download</a>

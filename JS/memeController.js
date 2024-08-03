@@ -22,7 +22,9 @@ function renderMeme() {
 
         meme.lines.forEach(line => {
             gCtx.lineWidth = 2
-            gCtx.strokeStyle = line.color
+            gCtx.strokeStyle = line.strokeClr
+            gCtx.fillStyle = line.fillClr
+
             gCtx.font = `${line.size}px Arial`
             gCtx.fillText(line.txt, line.x, line.y)
             gCtx.strokeText(line.txt, line.x, line.y)
@@ -30,10 +32,17 @@ function renderMeme() {
     }
 }
 
-function onSelectedColor() {
-    const colorValue = document.querySelector('#color').value
-    selectedColor(colorValue)
+function onSelectedStrokeClr() {
+    const colorValue = document.querySelector('#strokeColor').value
+    selectedStrokeColor(colorValue)
 }
+
+function onSelectedFillClr() {
+    const colorValue = document.querySelector('#fillClr').value
+    selectedFillColor(colorValue)
+}
+
+
 
 function onSetLineText() {
     const elText = document.querySelector('#text')
@@ -43,4 +52,12 @@ function onSetLineText() {
 function onDownloadMeme(elLink) {
     const imgContent = gElCanvas.toDataURL('image/jpeg')
     elLink.href = imgContent
+}
+
+function onIncreaseFont() {
+    increaseFont()
+}
+
+function onDecreaseFont() {
+    decreaseFont()
 }

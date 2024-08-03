@@ -11,7 +11,8 @@ var gMeme = {
         {
             txt: '',
             size: 40,
-            color: '#dcad2e',
+            strokeClr: 'black',
+            fillClr: 'green',
             x: 100,
             y: 100,
 
@@ -46,10 +47,33 @@ function setLineTxt(text) {
     renderMeme()
 }
 
-function selectedColor(clr) {
+function selectedStrokeColor(clr) {
     const meme = getMeme()
     const { selectedLineIdx, lines } = meme
-    lines[selectedLineIdx].color = clr
+    lines[selectedLineIdx].strokeClr = clr
 
+    renderMeme()
+}
+
+function selectedFillColor(clr) {
+    const meme = getMeme()
+    const { selectedLineIdx, lines } = meme
+    lines[selectedLineIdx].fillClr = clr
+    console.log(lines[selectedLineIdx].fillClr)
+
+    renderMeme()
+}
+
+function increaseFont() {
+    const meme = getMeme()
+    const { selectedLineIdx, lines } = meme
+    lines[selectedLineIdx].size += 5
+    renderMeme()
+}
+
+function decreaseFont() {
+    const meme = getMeme()
+    const { selectedLineIdx, lines } = meme
+    lines[selectedLineIdx].size += -5
     renderMeme()
 }
