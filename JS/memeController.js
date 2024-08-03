@@ -40,6 +40,7 @@ function onSetLineText() {
     setLineTxt(elText.value)
 }
 
-function onSubmit(ev) {
-    ev.preventDefault()
+function onDownloadMeme(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
 }
