@@ -7,6 +7,7 @@ var gImgs = [
 var gMeme = {
     selectedImgId: 1,
     selectedLineIdx: 0,
+    selectedImg: null,
     lines: [
         {
             txt: '',
@@ -15,6 +16,15 @@ var gMeme = {
             fillClr: 'green',
             x: 100,
             y: 100,
+
+        },
+        {
+            txt: '',
+            size: 40,
+            strokeClr: 'black',
+            fillClr: 'green',
+            x: 100,
+            y: 50,
 
         }
     ]
@@ -25,55 +35,44 @@ function getMeme() {
     return gMeme
 }
 
+function drawImg(imgId) {
+    const img = gImgs.find(img => img.id === imgId)
+
+    return img
+}
+
 function getImages() {
     return gImgs
 }
 
-function getImgUrl(idx) {
-    const img = gImgs.find(img => img.id === idx)
-    return img.url
-}
-
-function setImg(idx) {
-    const meme = getMeme()
-    meme.selectedImgId = idx
+function setImg(imgId) {
+    gMeme.selectedImgId = imgId
 }
 
 function setLineTxt(text) {
-    const meme = getMeme()
-    const { selectedLineIdx, lines } = meme
-    lines[selectedLineIdx].txt = text
+    const { selectedLineIdx, lines } = gMeme
 
-    renderMeme()
+    lines[selectedLineIdx].txt = text
 }
 
 function selectedStrokeColor(clr) {
-    const meme = getMeme()
-    const { selectedLineIdx, lines } = meme
-    lines[selectedLineIdx].strokeClr = clr
+    const { selectedLineIdx, lines } = gMeme
 
-    renderMeme()
+    lines[selectedLineIdx].strokeClr = clr
 }
 
 function selectedFillColor(clr) {
-    const meme = getMeme()
-    const { selectedLineIdx, lines } = meme
-    lines[selectedLineIdx].fillClr = clr
-    console.log(lines[selectedLineIdx].fillClr)
+    const { selectedLineIdx, lines } = gMeme
 
-    renderMeme()
+    lines[selectedLineIdx].fillClr = clr
 }
 
 function increaseFont() {
-    const meme = getMeme()
-    const { selectedLineIdx, lines } = meme
+    const { selectedLineIdx, lines } = gMeme
     lines[selectedLineIdx].size += 5
-    renderMeme()
 }
 
 function decreaseFont() {
-    const meme = getMeme()
-    const { selectedLineIdx, lines } = meme
+    const { selectedLineIdx, lines } = gMeme
     lines[selectedLineIdx].size += -5
-    renderMeme()
 }
