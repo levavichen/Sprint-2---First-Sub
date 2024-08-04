@@ -5,27 +5,23 @@ function renderMeme() {
     const meme = getMeme()
     const currImg = drawImg(meme.selectedImgId)
 
-    // gMeme.selectedImg = elImg
-
-    // gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height)
-    // elImg.onload = () => {
-    //     resizeCanvas(elImg)
-    //     gCtx.drawImage(elImg, 0, 0, elImg.naturalWidth, elImg.naturalHeight)
-    // }
     renderImg(currImg)
     renderText()
 }
 
 function renderText(){
     const meme = getMeme()
+    meme.selectedLineIdx = idx
 
-    meme.lines.forEach(line => {
+
+    meme.lines.forEach((line,idx) => {
         gCtx.lineWidth = 2
         gCtx.strokeStyle = line.strokeClr
         gCtx.fillStyle = line.fillClr
 
         gCtx.font = `${line.size}px Arial`
         gCtx.fillText(line.txt, line.x, line.y)
+        console.log(line.y)
         gCtx.strokeText(line.txt, line.x, line.y)
     })
 }

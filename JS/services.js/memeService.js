@@ -6,7 +6,7 @@ var gImgs = [
 ]
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 0,
+    selectedLineIdx: 1,
     selectedImg: null,
     lines: [
         {
