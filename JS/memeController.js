@@ -9,24 +9,21 @@ function renderMeme() {
     renderText()
 }
 
-function renderText(){
+function renderText() {
     const meme = getMeme()
-    meme.selectedLineIdx = idx
 
-
-    meme.lines.forEach((line,idx) => {
+    meme.lines.forEach((line) => {
         gCtx.lineWidth = 2
         gCtx.strokeStyle = line.strokeClr
         gCtx.fillStyle = line.fillClr
-
         gCtx.font = `${line.size}px Arial`
+
         gCtx.fillText(line.txt, line.x, line.y)
-        console.log(line.y)
         gCtx.strokeText(line.txt, line.x, line.y)
     })
 }
 
-function renderImg(img){
+function renderImg(img) {
     const elImg = new Image()
     elImg.src = img.url
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
@@ -65,4 +62,27 @@ function onIncreaseFont() {
 function onDecreaseFont() {
     decreaseFont()
     renderMeme()
+    renderFrame()
+
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
+
+function onSwitchLine() {
+    switchLine()
+    renderMeme()
+    renderFrame()
+}
+
+function renderFrame() {
+    const { selectedLineIdx, lines } = gMeme
+    const { startPosX, startPosY, textHeight, textWidth, txt } = getTextDimensions(lines[selectedLineIdx])
+
+    if (txt === '') return
+
+    gCtx.strokeStyle = 'red'
+    gCtx.strokeRect(startPosX, startPosY - textHeight, textWidth, textHeight + 10)
 }

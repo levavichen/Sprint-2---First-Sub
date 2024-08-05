@@ -6,15 +6,15 @@ var gImgs = [
 ]
 var gMeme = {
     selectedImgId: 1,
-    selectedLineIdx: 1,
+    selectedLineIdx: 0,
     selectedImg: null,
     lines: [
         {
-            txt: '',
+            txt: 'Enter Text',
             size: 40,
             strokeClr: 'black',
-            fillClr: 'green',
-            x: 100,
+            fillClr: 'white',
+            x: 175,
             y: 100,
 
         },
@@ -22,10 +22,9 @@ var gMeme = {
             txt: '',
             size: 40,
             strokeClr: 'black',
-            fillClr: 'green',
-            x: 100,
-            y: 50,
-
+            fillClr: 'white',
+            x: 175,
+            y: 450,
         }
     ]
 }
@@ -75,4 +74,33 @@ function increaseFont() {
 function decreaseFont() {
     const { selectedLineIdx, lines } = gMeme
     lines[selectedLineIdx].size += -5
+}
+
+function addLine() {
+    const { lines } = gMeme
+
+    lines[1].txt = 'Enter Text'
+}
+
+function switchLine() {
+    const { selectedLineIdx } = gMeme
+
+    gMeme.selectedLineIdx = selectedLineIdx === 0 ? 1 : 0
+}
+
+function getTextDimensions(currLine) {
+    console.log(currLine)
+    const { x: startPosX, y: startPosY, size, txt } = currLine
+    const { width: textWidth } = gCtx.measureText(txt)
+    const textHeight = size
+
+    const txtDimensions = {
+        startPosX,
+        startPosY,
+        textHeight,
+        textWidth,
+        txt
+    }
+
+    return txtDimensions
 }
