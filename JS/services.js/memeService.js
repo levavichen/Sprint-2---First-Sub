@@ -10,21 +10,27 @@ var gMeme = {
     selectedImg: null,
     lines: [
         {
+            id: 0,
             txt: 'Enter Text',
             size: 40,
-            strokeClr: 'black',
-            fillClr: 'white',
+            width: 2,
+            strokeClr: '#000000',
+            fillClr: '#ffffff',
             x: 175,
             y: 100,
+            isClicked: false,
 
         },
         {
+            id: 1,
             txt: '',
             size: 40,
-            strokeClr: 'black',
-            fillClr: 'white',
+            width: 2,
+            strokeClr: '#000000',
+            fillClr: '#ffffff',
             x: 175,
             y: 450,
+            isClicked: false,
         }
     ]
 }
@@ -48,10 +54,10 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function setLineTxt(text) {
-    const { selectedLineIdx, lines } = gMeme
+function setLineTxt(text, lineIdx) {
+    const { lines } = gMeme
 
-    lines[selectedLineIdx].txt = text
+    lines[lineIdx].txt = text
 }
 
 function selectedStrokeColor(clr) {
@@ -79,17 +85,17 @@ function decreaseFont() {
 function addLine() {
     const { lines } = gMeme
 
+
     lines[1].txt = 'Enter Text'
 }
 
 function switchLine() {
-    const { selectedLineIdx } = gMeme
+    const { selectedLineIdx, lines } = gMeme
 
     gMeme.selectedLineIdx = selectedLineIdx === 0 ? 1 : 0
 }
 
 function getTextDimensions(currLine) {
-    console.log(currLine)
     const { x: startPosX, y: startPosY, size, txt } = currLine
     const { width: textWidth } = gCtx.measureText(txt)
     const textHeight = size
@@ -103,4 +109,21 @@ function getTextDimensions(currLine) {
     }
 
     return txtDimensions
+}
+
+function checkIsClicked(ev) {
+    const { offsetX: posX, offsetY: posY } = ev
+    const { lines } = gMeme
+
+    const clickedLine = lines.find(line => {
+        const { width: textWidth } = gCtx.measureText(line)
+        return (
+            posX > line.x && posX < line.x + textWidth &&
+            posY > line.y - line.size && posY < line.y
+        )
+    })
+
+    if (clickedLine !== undefined) {
+        return clickedLine.id
+    }
 }
